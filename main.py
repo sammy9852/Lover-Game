@@ -9,7 +9,7 @@ user_input = int(input(WHITE + '1. Start Game\n'
                                '2. About Lover-Game\n'
                                '3. Exit Application\n\n'
                                'Choose an option above : '))
-
+s
 # determine user input
 if user_input == 1:
     user_input = int(input(WHITE + 'Choose your Level\n'
