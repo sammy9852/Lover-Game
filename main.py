@@ -3,20 +3,18 @@ from colors import *
 # importing random module
 from random import randint
 
-# Welcome Screen
-print(YELLOW, '***** Welcome to LOVER-GAME *****')
-user_input = int(input(WHITE + '1. Start Game\n'
-                               '2. About Lover-Game\n'
-                               '3. Exit Application\n\n'
-                               'Choose an option above : '))
-s
+
 # determine user input
-if user_input == 1:
+def game_level():
     user_input = int(input(WHITE + 'Choose your Level\n'
                                    '1. Lazy(1-100)\n'
                                    '2. Hard(1-500)\n'
                                    '3. Difficult(1-1000)\n'
                                    'Choose your level:  '))
+    return user_input
+
+
+def user_guess_range(user_input):
     guess_range = 0
     if user_input == 1:
         guess_range = 100
@@ -24,7 +22,10 @@ if user_input == 1:
         guess_range = 500
     elif user_input == 3:
         guess_range = 1000
-    print(RED, 'Choose from the above option')
+    return guess_range
+
+
+def user_guess(guess_range):
     #        generate random number base on the guess range
     generated_number = randint(1, guess_range)
     #  user guessing attempt
@@ -46,12 +47,31 @@ if user_input == 1:
         print(RED, f'You Failed, Try Again !!\n'
                    f'The Correct Guess Number is\t{generated_number}')
 
+    # Welcome Screen
 
-elif user_input == 2:
-    print(YELLOW,
-          'Love Guessing Number game which you will fall in love with it the moment you start to play it\tCHEERS')
-elif user_input == 3:
-    print(WHITE, 'Hope to see you again.')
-    exit(1)
-else:
-    print(RED, 'Invalid Option\tTRY AGAIN!!!')
+
+def welcome_screen():
+    print(YELLOW, '***** Welcome to LOVER-GAME *****')
+    user_input = int(input(WHITE + '1. Start Game\n'
+                                   '2. About Lover-Game\n'
+                                   '3. Exit Application\n\n'
+                                   'Choose an option above : '))
+
+    if user_input == 1:
+        user_input = game_level()
+        # determine the guess ran
+        guess_range = user_guess_range(user_input)
+
+        user_guess(guess_range)
+
+    elif user_input == 2:
+        print(YELLOW,
+              'Love Guessing Number game which you will fall in love with it the moment you start to play it\tCHEERS')
+    elif user_input == 3:
+        print(WHITE, 'Hope to see you again.')
+        exit(1)
+    else:
+        print(RED, 'Invalid Option\tTRY AGAIN!!!')
+
+
+welcome_screen()
